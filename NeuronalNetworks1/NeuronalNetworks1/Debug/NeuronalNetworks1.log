@@ -1,3 +1,4 @@
-﻿  Source.cpp
-c:\users\ady\source\repos\neuronalnetworks1\neuronalnetworks1\source.cpp(30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  NeuronalNetworks1.vcxproj -> C:\Users\Ady\source\repos\NeuronalNetworks1\Debug\NeuronalNetworks1.exe
+﻿  Layer.cpp
+d:\myfirstneuronalnetwork\myfirstneuronalnetwork\neuronalnetworks1\neuronalnetworks1\layer.cpp(23): warning C4018: '<': signed/unsigned mismatch
+d:\myfirstneuronalnetwork\myfirstneuronalnetwork\neuronalnetworks1\neuronalnetworks1\layer.cpp(51): warning C4018: '<': signed/unsigned mismatch
+  NeuronalNetworks1.vcxproj -> D:\MyFirstNeuronalNetwork\MyFirstNeuronalNetwork\NeuronalNetworks1\Debug\NeuronalNetworks1.exe

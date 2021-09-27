@@ -17,8 +17,7 @@ and the collumns equal to the number of inputs (1 set of weights from each input
 
 int main()
 {
-
-
+	
 
 	//Input nodes: value and next layer count
 	Node x0("x0", 1, 3);
@@ -35,6 +34,10 @@ int main()
 	Input.addNode(x2);
 	Input.addNode(x3);
 
+
+	Input.outputWeightsMatrix();
+
+	/*
 	// Hidden layer nodes or output nodes: layer + bias
 	Node y0("y0", Input.nodes, 2, 0, true);
 	Node y1("y1", Input.nodes, 3, 0, true);
@@ -46,6 +49,7 @@ int main()
 	y.addNode(y1);
 	y.addNode(y2);
 	std::cout<< y.returnNodeValue(0);
+	*/
 
 	system("pause");
 
