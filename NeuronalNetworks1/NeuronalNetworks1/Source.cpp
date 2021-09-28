@@ -35,7 +35,8 @@ int main()
 	Input.addNode(x3);
 
 
-	Input.outputWeightsMatrix();
+	//Input.outputWeightsMatrix();
+	Input.calculateNewLayer();
 
 	/*
 	// Hidden layer nodes or output nodes: layer + bias

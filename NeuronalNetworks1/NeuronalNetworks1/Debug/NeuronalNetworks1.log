@@ -1,4 +1,6 @@
 ﻿  Layer.cpp
-d:\myfirstneuronalnetwork\myfirstneuronalnetwork\neuronalnetworks1\neuronalnetworks1\layer.cpp(23): warning C4018: '<': signed/unsigned mismatch
-d:\myfirstneuronalnetwork\myfirstneuronalnetwork\neuronalnetworks1\neuronalnetworks1\layer.cpp(51): warning C4018: '<': signed/unsigned mismatch
+d:\myfirstneuronalnetwork\myfirstneuronalnetwork\neuronalnetworks1\neuronalnetworks1\layer.cpp(98): warning C4018: '<': signed/unsigned mismatch
+d:\myfirstneuronalnetwork\myfirstneuronalnetwork\neuronalnetworks1\neuronalnetworks1\layer.cpp(126): warning C4018: '<': signed/unsigned mismatch
+  Source.cpp
+  Generating Code...
   NeuronalNetworks1.vcxproj -> D:\MyFirstNeuronalNetwork\MyFirstNeuronalNetwork\NeuronalNetworks1\Debug\NeuronalNetworks1.exe
