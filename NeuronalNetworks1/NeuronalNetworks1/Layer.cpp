@@ -1,26 +1,106 @@
 #include "Layer.h"
 
-// Simple implementation of built-in python zip (credit to the NNfSiX repository)
 
-template<typename T, typename P>
-std::vector<std::tuple<T, P>> zip(typename std::vector<T>::iterator firstArrayBegin,
-	typename std::vector<P>::iterator secondArrayBegin,
-	typename std::vector<P>::const_iterator secondArrayEnd)
-{
-	const auto size = std::distance(static_cast<decltype(secondArrayEnd)>(secondArrayBegin), secondArrayEnd);
-	std::vector<std::tuple<T, P>> zipped;
-	zipped.reserve(size);
-	while (secondArrayBegin != secondArrayEnd) {
-		zipped.emplace_back(*firstArrayBegin++, *secondArrayBegin++);
-	}
-	return zipped;
+double random(const double& min, const double& max) {
+	std::mt19937_64 rng{}; rng.seed(std::random_device{}());
+	return std::uniform_real_distribution<>{min, max}(rng);
 }
 
-Layer::Layer():weightMatrix(row, std::vector<double>(row))
+
+//Matrix transpose
+matrix transposeMatrix(const matrix& m)
 {
-	nodeCount = 0;
+	matrix mat;
+
+	for (size_t i = 0; i < m[0].size(); i++) {
+		mat.push_back({});
+		for (size_t j = 0; j < m.size(); j++) {
+			mat[i].push_back(m[j][i]);
+		}
+	}return mat;
+}
+
+//Matrix multiplication
+matrix operator*(const matrix& m1, const matrix& m2) noexcept
+{
+	matrix result;
+	matrix m3 = transposeMatrix(m2);
+	
+
+	for (size_t i = 0; i < m1.size(); i++)
+	{
+		result.push_back({});
+
+		for (size_t j = 0; j < m3.size(); j++)
+		{
+			result[i].push_back(std::inner_product(m1[i].begin(), m1[i].end(), m3[j].begin(), 0.0));
+		}
+
+	}
+	return result;
+}
+
+
+//Matrix addition
+matrix operator+(const matrix& m, const row& v)
+{
+	matrix result;
+
+
+	for (size_t i = 0; i < m.size(); i++)
+	{
+		result.push_back({});
+
+		for (size_t j = 0; j < m[i].size(); j++)
+		{
+			result[i].push_back(m[i][j] + v[i]);
+		}
+	}
+
+	return result;
+}
+
+
+
+
+//....................................... LAYER METHODS .......................................
+
+//Optimized code:
+
+Layer::Layer(const size_t& inputsNumber, const size_t& thisLayersNeurons) : weightsMat(inputsNumber, row (thisLayersNeurons)), biases(thisLayersNeurons, 0)
+{
+	for (size_t i = 0; i < inputsNumber; i++)
+	{
+		for (size_t j = 0; j < thisLayersNeurons; j++)
+		{
+			weightsMat[i][j] = random(-1.0, 1.0);
+		}
+	}
+
+}
+
+//Forming the output of the neurons in this layer 
+void Layer::forwardPass(const matrix& inputs)
+{
+	output = inputs * weightsMat + biases;
+}
+
+
+//Output layer
+matrix Layer::outputLayer() const
+{
+	return output;
+}
+
+void Layer::displayLayer()
+{
 	
 }
+
+
+
+
+//Old code:
 
 //Adding a node to the layer
 void Layer::addNode(Node node)
@@ -47,6 +127,8 @@ void Layer::setNextLayerBias()
 	}
 }
 
+
+
 //Multiplication between weights matrix and inputs vector.
 std::vector<double> Layer::dotProduct()
 {
@@ -65,6 +147,8 @@ std::vector<double> Layer::dotProduct()
 	}
 	return result;
 }
+
+
 
 std::vector<double> Layer::vectorSum(std::vector<double> v1, std::vector<double>v2)
 {

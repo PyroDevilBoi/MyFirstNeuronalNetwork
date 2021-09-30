@@ -8,11 +8,28 @@
 #include <numeric>
 #include <tuple>
 #include <cstdlib>
+#include <ctime>
+#include <random>
+
+using matrix = std::vector< std::vector< double> >; 
+using row = std::vector< double >;    
+
+
+
+
+
+
+
 
 class Layer {
 
 public:
-	int row = 64;
+
+	matrix weightsMat, output;
+	row biases;
+
+
+	
 	std::vector<Node> nodes;
 	std::vector<double> nodeInputs;
 	std::vector<std::vector<double>> weightMatrix;
@@ -24,7 +41,10 @@ public:
 
 
 
-	Layer();
+	Layer(const size_t& inputsNumber, const size_t& thisLayersNeurons);
+	void forwardPass(const matrix& inputs);
+	matrix outputLayer() const;
+	void displayLayer();
 	void addNode(Node node);
 	void setNextLayerBias();
 	void addToWeightMatrix(std::vector<double> nodeWeights);
