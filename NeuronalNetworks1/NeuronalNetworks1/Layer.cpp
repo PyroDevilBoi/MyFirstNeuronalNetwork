@@ -6,6 +6,12 @@ double random(const double& min, const double& max) {
 	return std::uniform_real_distribution<>{min, max}(rng);
 }
 
+row operator+(const row& r1, const row& r2) {
+	row rval(r1.begin(), r1.end());
+	for (size_t i = 0; i < rval.size(); i++)
+		rval[i] += r2[i];
+	return rval;
+}
 
 //Matrix transpose
 matrix transposeMatrix(const matrix& m)
@@ -25,7 +31,7 @@ matrix operator*(const matrix& m1, const matrix& m2) noexcept
 {
 	matrix result;
 	matrix m3 = transposeMatrix(m2);
-	
+
 
 	for (size_t i = 0; i < m1.size(); i++)
 	{
@@ -60,6 +66,20 @@ matrix operator+(const matrix& m, const row& v)
 	return result;
 }
 
+std::tuple<matrix, row> spiral_data(const size_t& points, const size_t& classes) {
+	matrix X(points*classes, row(2, 0));
+	row y(points*classes, 0);
+	double r, t;
+	for (size_t i = 0; i < classes; i++) {
+		for (size_t j = 0; j < points; j++) {
+			r = double(j) / double(points);
+			t = i * 4 + (4 * r);
+			X[i*points + j] = row{ r*cos(t*2.5), r*sin(t*2.5) } +row{ random(-0.15,0.15), random(-0.15,0.15) };
+			y[i*points + j] = i;
+		}
+	}
+	return std::make_tuple(X, y);
+}
 
 
 
@@ -69,11 +89,11 @@ matrix operator+(const matrix& m, const row& v)
 
 Layer::Layer(const size_t& inputsNumber, const size_t& thisLayersNeurons) : weightsMat(inputsNumber, row (thisLayersNeurons)), biases(thisLayersNeurons, 0)
 {
-	for (size_t i = 0; i < inputsNumber; i++)
+	for (size_t i = 0; i < thisLayersNeurons; i++)
 	{
-		for (size_t j = 0; j < thisLayersNeurons; j++)
+		for (size_t j = 0; j < inputsNumber; j++)
 		{
-			weightsMat[i][j] = random(-1.0, 1.0);
+			weightsMat[j][i] = random(-1.0, 1.0);
 		}
 	}
 
@@ -101,7 +121,7 @@ void Layer::displayLayer()
 
 
 //Old code:
-
+/*
 //Adding a node to the layer
 void Layer::addNode(Node node)
 {
@@ -211,3 +231,4 @@ void Layer::returnAllNodeValues()
 		std::cout << nodes[i].value << " ";
 	
 }
+*/

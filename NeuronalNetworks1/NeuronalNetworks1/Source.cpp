@@ -1,7 +1,7 @@
-#include "Node.h"
-#include <iostream>
-#include <vector>
+
 #include "Layer.h"
+
+
 
 // Dynamic matrix outputting
 std::ostream& operator<<(std::ostream& os, const matrix& m) noexcept {
@@ -11,6 +11,15 @@ std::ostream& operator<<(std::ostream& os, const matrix& m) noexcept {
 		os << "\n";
 	}return os;
 }
+
+std::ostream& operator<<(std::ostream& os, const  row& dr) {
+	os << " [";
+	for (auto& item : dr)
+		os << std::setw(15) << item << " ";
+	os << "]\n";
+	return os;
+}
+
 
 int main()
 {
@@ -23,6 +32,8 @@ int main()
 
 	row testBiases1{ 0.5, 0.3, 0.1, 0.7, 0.9 };
 	row testBiases2{ 0.1, 0.9, 0.1, 0.4 };
+	
+	
 
 	Layer hiddenLayer1(4,5);
 	hiddenLayer1.biases = testBiases1;

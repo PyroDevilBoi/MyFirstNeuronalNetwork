@@ -2,7 +2,6 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include "Node.h"
 #include <algorithm>
 #include <iterator>
 #include <numeric>
@@ -10,6 +9,9 @@
 #include <cstdlib>
 #include <ctime>
 #include <random>
+#include <iomanip>
+#include <cmath>
+
 
 using matrix = std::vector< std::vector< double> >; 
 using row = std::vector< double >;    
@@ -17,6 +19,24 @@ using row = std::vector< double >;
 
 
 
+double random(const double& min, const double& max);
+	
+
+
+row operator+(const row& r1, const row& r2);
+
+//Matrix transpose
+matrix transposeMatrix(const matrix& m);
+
+
+//Matrix multiplication
+matrix operator*(const matrix& m1, const matrix& m2) noexcept;   //no except
+
+//Matrix addition
+matrix operator+(const matrix& m, const row& v);
+
+
+std::tuple<matrix, row> spiral_data(const size_t& points, const size_t& classes);
 
 
 
@@ -30,7 +50,7 @@ public:
 
 
 	
-	std::vector<Node> nodes;
+	
 	std::vector<double> nodeInputs;
 	std::vector<std::vector<double>> weightMatrix;
 	std::vector<double> nextLayerBiases;
@@ -45,7 +65,7 @@ public:
 	void forwardPass(const matrix& inputs);
 	matrix outputLayer() const;
 	void displayLayer();
-	void addNode(Node node);
+	
 	void setNextLayerBias();
 	void addToWeightMatrix(std::vector<double> nodeWeights);
 	void outputWeightsMatrix();
