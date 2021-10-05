@@ -27,7 +27,7 @@ matrix transposeMatrix(const matrix& m)
 }
 
 //Matrix multiplication
-matrix operator*(const matrix& m1, const matrix& m2) noexcept
+matrix operator*(const matrix& m1, const matrix& m2) 
 {
 	matrix result;
 	matrix m3 = transposeMatrix(m2);

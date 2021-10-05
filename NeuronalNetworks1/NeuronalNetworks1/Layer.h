@@ -30,7 +30,7 @@ matrix transposeMatrix(const matrix& m);
 
 
 //Matrix multiplication
-matrix operator*(const matrix& m1, const matrix& m2) noexcept;   //no except
+matrix operator*(const matrix& m1, const matrix& m2);   //no except
 
 //Matrix addition
 matrix operator+(const matrix& m, const row& v);
