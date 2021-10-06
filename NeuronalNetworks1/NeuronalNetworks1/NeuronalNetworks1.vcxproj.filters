@@ -32,5 +32,8 @@
     <ClInclude Include="Layer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="NeuralUtilities.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

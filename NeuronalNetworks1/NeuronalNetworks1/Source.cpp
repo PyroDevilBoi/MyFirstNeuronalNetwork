@@ -42,7 +42,7 @@ int main()
 	row testBiases1{ 0.5, 0.3, 0.1, 0.7, 0.9 };
 	row testBiases2{ 0.1, 0.9, 0.1, 0.4 };
 	
-//	auto x = spiral_data(100, 3);
+	auto x = spiral_data(100, 3);
 
 	Layer hiddenLayer1(4,5);
 	//hiddenLayer1.biases = testBiases1;
