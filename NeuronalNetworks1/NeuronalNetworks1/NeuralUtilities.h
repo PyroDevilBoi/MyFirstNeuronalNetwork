@@ -12,7 +12,7 @@
 #include <iomanip>
 #include <cmath>
 
-
+// Inspired by https://github.com/HippozHipos/neural-net
 
 //Defining debug for logging
 
