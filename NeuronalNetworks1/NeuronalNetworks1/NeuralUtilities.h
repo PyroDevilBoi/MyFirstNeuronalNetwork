@@ -131,8 +131,8 @@ namespace Utilities
 		static RandomC& Get();
 		int Range(const int min, const int max);
 		double Range(const double min, const double max);
-		void Matrix(const int rows, const int cols, const double min, const double max, nVector& outvec);
-		void Vector(const unsigned int size, const double min, const double max, nVector& outvec);
+		void Matrix(const int rows, const int cols, const double lower, const double upper, nMatrix& outvec);
+		void Vector(const unsigned int size, const double lower, const double upper, nVector& outvec);
 
 	};
 	static RandomC& rng = RandomC::Get();
