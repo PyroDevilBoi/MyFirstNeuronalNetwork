@@ -44,7 +44,7 @@ namespace Utilities
 		{
 			v.clear();
 
-			for (int i = 0; i < size; i++)
+			for (unsigned int i = 0; i < size; i++)
 			{
 				v.push_back(numberFilling);
 			}
@@ -55,7 +55,7 @@ namespace Utilities
 			out << "[";
 			for (unsigned int i = 0; i < vec.v.size(); i++)
 			{
-				if (i % vec.v.size() == vec.v.size - 1)
+				if (i % vec.v.size() == vec.v.size() - 1)
 				{
 					std::cout << "]";
 				}
@@ -83,10 +83,10 @@ namespace Utilities
 		{
 			m.clear();
 
-			for (int i = 0; i < rows; i++)
+			for (unsigned int i = 0; i < rows; i++)
 			{
 				nVector currentVec;
-				for (int j = 0; j < cols; j++)
+				for (unsigned int j = 0; j < cols; j++)
 				{
 					currentVec.v.push_back(num);
 				}
@@ -96,10 +96,11 @@ namespace Utilities
 
 		friend std::ostream& operator <<(std::ostream& out, const nMatrix& mat)
 		{
-			out << "[" << std::endl << std:endl;
-			for (int i = 0; i < mat.m.size(); i++)
+			out << "[" << std::endl << std::endl;
+			for (unsigned int i = 0; i < mat.m.size(); i++)
 			{
-				for (int j = 0; j < mat.m[i].size(); j++)
+				out << "[";
+				for (unsigned int j = 0; j < mat.m[i].v.size(); j++)
 				{
 					if (j % mat.m[i].v.size() == mat.m[i].v.size() - 1)
 					{
@@ -122,7 +123,7 @@ namespace Utilities
 
 	class RandomC {
 	private:
-		std::mt19937 randomEngine;
+		std::mt19937 _randomEngine;
 		RandomC();
 		RandomC(const RandomC&) = delete;
 		~RandomC();
@@ -147,7 +148,7 @@ namespace Utilities
 			throw std::exception();
 
 		double result = 0;
-		for (int i = 0; i < v1.v.size(); i++)
+		for (unsigned int i = 0; i < v1.v.size(); i++)
 		{
 			result += v1.v[i] * v2.v[i];
 		}
@@ -157,7 +158,7 @@ namespace Utilities
 	inline double vectorMax(nVector& v)
 	{
 		double max = v.v[0];
-		for (int i = 0; i < v.v.size(); i++)
+		for (unsigned int i = 0; i < v.v.size(); i++)
 		{
 			max = MAX(max, v.v[i]);
 		}
@@ -169,7 +170,7 @@ namespace Utilities
 	inline double vectorMin(nVector& v)
 	{
 		double min = v.v[0];
-		for (int i = 0; i < v.v.size(); i++)
+		for (unsigned int i = 0; i < v.v.size(); i++)
 		{
 			min = MAX(min, v.v[i]);
 		}
@@ -182,7 +183,7 @@ namespace Utilities
 	{
 		nVector newVec;
 		
-		for (int i = 0; i < v.v.size(); i++)
+		for (unsigned int i = 0; i < v.v.size(); i++)
 		{
 			newVec.v.push_back(MIN(maxVal, v.v[i]));
 		}
@@ -194,7 +195,7 @@ namespace Utilities
 	{
 		nVector newVec;
 
-		for (int i = 0; i < v.v.size(); i++)
+		for (unsigned int i = 0; i < v.v.size(); i++)
 		{
 			newVec.v.push_back(MAX(minVal, v.v[i]));
 		}
@@ -206,7 +207,7 @@ namespace Utilities
 	{
 		nVector newVec;
 
-		for (int i = 0; i < v.v.size(); i++)
+		for (unsigned int i = 0; i < v.v.size(); i++)
 		{
 			newVec.v[i] = pow(EULERS_NUMBER, v.v[i]);
 		}
@@ -219,7 +220,7 @@ namespace Utilities
 		
 		double sum = 0;
 
-		for (int i = 0; i < v.v.size(); i++)
+		for (unsigned int i = 0; i < v.v.size(); i++)
 		{
 			sum += v.v[i];
 			
@@ -233,7 +234,7 @@ namespace Utilities
 		nVector clone;
 		double sum = vectorSum(v);
 
-		for (int i = 0; i < v.v.size(); i++)
+		for (unsigned int i = 0; i < v.v.size(); i++)
 		{
 			clone.v.push_back(v.v[i] / sum);
 		}
@@ -378,9 +379,9 @@ namespace Utilities
 
 		max = m.m[0].v[0];
 
-		for (int i = 0; i < m.m.size(); i++)
+		for (unsigned int i = 0; i < m.m.size(); i++)
 		{
-			for (int j = 0; j < m.m[i].v.size(); j++)
+			for (unsigned int j = 0; j < m.m[i].v.size(); j++)
 			{
 				if (m.m[i].v[j] > max)
 				{
@@ -399,9 +400,9 @@ namespace Utilities
 
 		min = m.m[0].v[0];
 
-		for (int i = 0; i < m.m.size(); i++)
+		for (unsigned int i = 0; i < m.m.size(); i++)
 		{
-			for (int j = 0; j < m.m[i].v.size(); j++)
+			for (unsigned int j = 0; j < m.m[i].v.size(); j++)
 			{
 				if (m.m[i].v[j] < min)
 				{

@@ -115,11 +115,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActivationFunctionsh.cpp" />
     <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="NeuralUtilities.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActivationFunctionsh.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="NeuralUtilities.h" />
     <ClInclude Include="Node.h" />

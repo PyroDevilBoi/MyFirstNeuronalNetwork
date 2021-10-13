@@ -1,13 +1,14 @@
 #include "NeuralUtilities.h"
 
 
+
 namespace Utilities
 {
 	RandomC::RandomC()
 	{
 		std::random_device randomSeed;
-		std::mt19937 randomEngine(randomSeed);
-		randomEngine = randomEngine;
+		std::mt19937 randomEngine(randomSeed());
+		_randomEngine = randomEngine;
 	}
 	RandomC::~RandomC() {};
 
@@ -20,13 +21,13 @@ namespace Utilities
 	int RandomC::Range(const int lower, const int upper)
 	{
 		std::uniform_int_distribution<int> distribution(lower, upper);
-		return distribution(randomEngine);
+		return distribution(_randomEngine);
 	}
 
 	double RandomC::Range(const double lower, const double upper)
 	{
 		std::uniform_real_distribution<double> distribution(lower, upper);
-		return distribution(randomEngine);
+		return distribution(_randomEngine);
 	}
 
 	void RandomC::Matrix(const  int rows, const  int cols, const double lower, const double upper, nMatrix& outmat)
