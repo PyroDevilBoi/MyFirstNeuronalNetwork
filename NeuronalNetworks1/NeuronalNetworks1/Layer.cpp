@@ -7,7 +7,7 @@ namespace neural_net
 		Utilities::rng.Matrix(inputsNumber, neuronsNumber, -1.0, 1.0, weights);
 		LOG("(dense layer init) initialized with matrix: " << std::endl << weights);
 		biases.fillVec(neuronsNumber, bias);
-		LOG("(dense layer init)'s biases initialized with bia values: " << std::endl << biases);
+		LOG("(dense layer init)'s biases initialized with bias values: " << std::endl << biases);
 	}
 
 	LayerDense::~LayerDense()

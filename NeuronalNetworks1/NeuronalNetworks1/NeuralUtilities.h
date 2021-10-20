@@ -57,13 +57,13 @@ namespace Utilities
 			{
 				if (i % vec.v.size() == vec.v.size() - 1)
 				{
-					std::cout << "]";
+					std::cout << vec.v[i] << "]";
 				}
 
 				else
 
 				{
-					std::cout << ", ";
+					std::cout << vec.v[i] << ", ";
 				}
 			}
 

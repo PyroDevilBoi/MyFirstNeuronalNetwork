@@ -8,10 +8,20 @@
 
 int main()
 {
+	//Target vector
+	Utilities::nVector target_vec;
+
+	target_vec.v.push_back(0);
+	target_vec.v.push_back(1);
+	target_vec.v.push_back(1);
+
+
+
 	//output 10 digits
 	std::cout.precision(10);
 
-	//input matrix with batches
+	//input matrix with batches; each line is a new batch of inputs, every collum is the value of that input in the order
+	//lines: number of batches            collums: number of neurons          values: input neuron value
 	Utilities::nMatrix x;
 
 	//matrix size: 3 neurons per batch
@@ -20,7 +30,7 @@ int main()
 	//fill input matrix with random values from -1 to 1
 	Utilities::rng.Matrix(size, size, -1.0, 1.0, x);
 
-	//initialize first layer:  3 inputs per batch    and 3 layer neurons per batch
+	//initialize first hidden layer:  3 inputs per batch    and 3 layer neurons per batch to be created in this layer
 	neural_net::LayerDense layer1 = neural_net::LayerDense(size, size);
 
 	//Pass the input matrix into the new layer
@@ -44,6 +54,19 @@ int main()
 	//pass the output of the previous layer
 	softMax1.forward(layer2.output);
 
+	neural_net::categoricalCrossEntropy cat;
+
+	
+	std::cout << "========SOFToutput==========" << std::endl;
+	//FINAL OUTPUT
+	std::cout << std::endl << softMax1.output;
+
+	cat.forward(softMax1.output, target_vec);
+
+	std::cout << "========TEST==========" << std::endl;
+	
+	std::cout << std::endl << cat.output;
+	
 
 	
 

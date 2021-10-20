@@ -1,4 +1,2 @@
-﻿  NeuralUtilities.cpp
-d:\myfirstneuronalnetwork\myfirstneuronalnetwork\neuronalnetworks1\neuronalnetworks1\neuralutilities.cpp(34): warning C4018: '<': signed/unsigned mismatch
-d:\myfirstneuronalnetwork\myfirstneuronalnetwork\neuronalnetworks1\neuronalnetworks1\neuralutilities.cpp(37): warning C4018: '<': signed/unsigned mismatch
+﻿  Source.cpp
   NeuronalNetworks1.vcxproj -> D:\MyFirstNeuronalNetwork\MyFirstNeuronalNetwork\NeuronalNetworks1\Debug\NeuronalNetworks1.exe
