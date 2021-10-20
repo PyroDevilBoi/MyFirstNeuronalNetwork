@@ -32,6 +32,11 @@
 #define EULERS_NUMBER pow((1.0 + 1.0 / 10000000.0), 10000000.0)
 #define PI 3.14159265359
 
+
+
+#define crossentropylimitL 1 * pow(10, - 7 )
+#define crossentropylimitH 1 - crossentropylimitL
+
 namespace Utilities
 {
 
@@ -153,6 +158,30 @@ namespace Utilities
 			result += v1.v[i] * v2.v[i];
 		}
 		return result;
+	}
+
+	//for calculating categoricalcrossentropy function
+	inline nVector negLog(nVector& v)
+	{
+		nVector result;
+
+		for (unsigned int i = 0; i < v.v.size(); i++)
+		{
+			result.v.push_back(-log(v.v[i]));
+		}
+
+		return result;
+	}
+
+	inline double mean(nVector& v)
+	{
+		double sum = 0;
+		for (unsigned int i = 0; i < v.v.size(); i++)
+		{
+			sum += v.v[i];
+		}
+
+		return sum / v.v.size();
 	}
 
 	inline double vectorMax(nVector& v)

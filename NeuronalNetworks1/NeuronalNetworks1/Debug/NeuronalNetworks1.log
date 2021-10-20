@@ -1,2 +1,13 @@
-﻿  Source.cpp
+﻿  ActivationFunctionsh.cpp
+d:\myfirstneuronalnetwork\myfirstneuronalnetwork\neuronalnetworks1\neuronalnetworks1\activationfunctionsh.cpp(76): warning C4244: 'argument': conversion from '_Ty' to 'const unsigned int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+  Layer.cpp
+  NeuralUtilities.cpp
+d:\myfirstneuronalnetwork\myfirstneuronalnetwork\neuronalnetworks1\neuronalnetworks1\neuralutilities.cpp(35): warning C4018: '<': signed/unsigned mismatch
+d:\myfirstneuronalnetwork\myfirstneuronalnetwork\neuronalnetworks1\neuronalnetworks1\neuralutilities.cpp(38): warning C4018: '<': signed/unsigned mismatch
+  Source.cpp
+  Generating Code...
   NeuronalNetworks1.vcxproj -> D:\MyFirstNeuronalNetwork\MyFirstNeuronalNetwork\NeuronalNetworks1\Debug\NeuronalNetworks1.exe

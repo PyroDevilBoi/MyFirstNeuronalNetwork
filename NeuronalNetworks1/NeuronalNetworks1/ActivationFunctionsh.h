@@ -41,7 +41,7 @@ namespace neural_net
 	//pass target vector (index of the vector's elements is output matrix row and each element is the matrix's collumn
 	//for(int i = 0; i < target.len; i++)
 	// output[i][v[i]] --> element we want
-	//if the target vector is passed as a matrix, multiply it by the output matrix and put the non-0 results in a vector
+	//if the target vector is passed as a matrix, do the dot product of each row of output matrix with each row of target matrix
 
 	// target vector: [0, 1, 1] as vector
 
@@ -57,7 +57,8 @@ namespace neural_net
 	//handles the selected outputs: applies mean/average to them
 	struct loss
 	{
-		Utilities::nVector output;
+		
+		double output;
 		loss();
 		~loss();
 		void forward(Utilities::nVector& inputs);
@@ -67,9 +68,12 @@ namespace neural_net
 	struct categoricalCrossEntropy
 	{
 		Utilities::nVector output;
+		Utilities::nVector correctConidence;
+		Utilities::nVector tempVec;
+		Utilities::nMatrix tempMat;
 		categoricalCrossEntropy();
 		~categoricalCrossEntropy();
-		void forward(Utilities::nMatrix& inputs);
+		void forward(Utilities::nMatrix& inputs, Utilities::nMatrix& target_class);
 		void forward(Utilities::nMatrix& inputs, Utilities::nVector& target_class);
 		
 	};

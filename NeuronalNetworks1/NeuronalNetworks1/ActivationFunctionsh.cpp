@@ -37,6 +37,11 @@ neural_net::loss::~loss()
 {
 }
 
+void neural_net::loss::forward(Utilities::nVector & inputs)
+{
+	output = Utilities::mean(inputs);
+}
+
 neural_net::categoricalCrossEntropy::categoricalCrossEntropy()
 {
 }
@@ -45,15 +50,31 @@ neural_net::categoricalCrossEntropy::~categoricalCrossEntropy()
 {
 }
 
+void neural_net::categoricalCrossEntropy::forward(Utilities::nMatrix & inputs, Utilities::nMatrix & target_class)
+{
+	tempMat = Utilities::matrixCapMin(crossentropylimitL, inputs);
+	tempMat = Utilities::matrixCapMax(crossentropylimitH, inputs);
+
+	for (unsigned int i = 0; i < tempMat.m[i].v.size(); i++)
+	{
+		correctConidence.v.push_back(Utilities::vectorDot(tempMat.m[i], target_class.m[i]));
+	}
+
+	output = Utilities::negLog(correctConidence);
+}
+
 
 
 void neural_net::categoricalCrossEntropy::forward(Utilities::nMatrix& inputs, Utilities::nVector& target_class)
 {
 	//a[i][v[i]]
+	tempMat = Utilities::matrixCapMin(crossentropylimitL, inputs);
+	tempMat = Utilities::matrixCapMax(crossentropylimitH, inputs);
 
 	for (unsigned int i = 0; i < target_class.v.size(); i++)
 	{
-		output.v.push_back(inputs.m[i].v[target_class.v[i]]);
+		correctConidence.v.push_back(tempMat.m[i].v[target_class.v[i]]);
 	}
+	output = Utilities::negLog(correctConidence);
 }
 

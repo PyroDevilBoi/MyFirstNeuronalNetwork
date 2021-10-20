@@ -55,6 +55,7 @@ int main()
 	softMax1.forward(layer2.output);
 
 	neural_net::categoricalCrossEntropy cat;
+	neural_net::loss loss1;
 
 	
 	std::cout << "========SOFToutput==========" << std::endl;
@@ -62,10 +63,14 @@ int main()
 	std::cout << std::endl << softMax1.output;
 
 	cat.forward(softMax1.output, target_vec);
+	loss1.forward(cat.output);
 
 	std::cout << "========TEST==========" << std::endl;
-	
+	std::cout << std::endl << cat.correctConidence;
 	std::cout << std::endl << cat.output;
+	std::cout << std::endl;
+	std::cout << "========lossAVG==========" << std::endl;
+	std::cout << std::endl << loss1.output;
 	
 
 	
