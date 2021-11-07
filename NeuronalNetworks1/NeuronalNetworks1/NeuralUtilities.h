@@ -99,6 +99,23 @@ namespace Utilities
 			}
 		}
 
+		//Only for matrices that have the same shape/size
+		void copyMat(nMatrix& m2)
+		{
+			
+			m.reserve(m2.m.size());
+
+			for (unsigned int i = 0; i < m2.m.size(); i++)
+			{
+				nVector clone;
+				for (unsigned int j = 0; j < m2.m[i].v.size(); j++)
+				{
+					clone.v.push_back(m2.m[i].v[j]);
+				}
+				m.push_back(clone);
+			}
+		}
+
 		friend std::ostream& operator <<(std::ostream& out, const nMatrix& mat)
 		{
 			out << "[" << std::endl << std::endl;

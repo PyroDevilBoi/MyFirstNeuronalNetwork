@@ -15,9 +15,12 @@ namespace neural_net
 	struct activationReLU
 	{
 		Utilities::nMatrix output;
+		Utilities::nMatrix inputs;
+		Utilities::nMatrix derivativeInputs;
 		activationReLU();
 		~activationReLU();
 		void forward(Utilities::nMatrix& inputs);
+		void backward(Utilities::nMatrix& dInputs);
 
 
 	};

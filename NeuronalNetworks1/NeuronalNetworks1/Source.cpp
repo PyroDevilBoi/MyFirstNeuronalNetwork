@@ -56,7 +56,7 @@ int main()
 
 	neural_net::categoricalCrossEntropy cat;
 	neural_net::loss loss1;
-
+	
 	
 	std::cout << "========SOFToutput==========" << std::endl;
 	//FINAL OUTPUT
@@ -71,6 +71,12 @@ int main()
 	std::cout << std::endl;
 	std::cout << "========lossAVG==========" << std::endl;
 	std::cout << std::endl << loss1.output;
+	std::cout << std::endl;
+	std::cout << "========backpropRelu==========" << std::endl;
+	
+	reLU1.backward(layer2.output);
+	std::cout << std::endl;
+	std::cout << std::endl << reLU1.derivativeInputs;
 	
 
 	
