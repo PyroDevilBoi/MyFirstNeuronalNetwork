@@ -99,6 +99,28 @@ namespace Utilities
 			}
 		}
 
+
+		//Matrix transpose
+		nMatrix transpose()
+		{
+			nMatrix newMatrix;
+		//	newMatrix.m.reserve(m[0].v.size());
+			// m[i].v.size()
+			// m.size()
+			for (unsigned int i = 0; i < m[0].v.size(); i++)
+			{
+				nVector currentVec;
+				for (unsigned int j = 0; j < m.size(); j++)
+				{
+					currentVec.v.push_back(m[j].v[i]);
+				}
+				newMatrix.m.push_back(currentVec);
+			}
+
+			return newMatrix;
+
+		}
+
 		//Only for matrices that have the same shape/size
 		void copyMat(nMatrix& m2)
 		{
@@ -602,6 +624,9 @@ namespace Utilities
 		}
 		return outmat;
 	}
+
+	
+	
 
 
 }

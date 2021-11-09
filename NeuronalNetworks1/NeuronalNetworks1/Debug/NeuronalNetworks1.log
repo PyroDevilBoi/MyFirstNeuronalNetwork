@@ -1,7 +1,2 @@
-﻿  ActivationFunctionsh.cpp
-d:\myfirstneuronalnetwork\myfirstneuronalnetwork\neuronalnetworks1\neuronalnetworks1\activationfunctionsh.cpp(96): warning C4244: 'argument': conversion from '_Ty' to 'const unsigned int', possible loss of data
-          with
-          [
-              _Ty=double
-          ]
+﻿  Source.cpp
   NeuronalNetworks1.vcxproj -> D:\MyFirstNeuronalNetwork\MyFirstNeuronalNetwork\NeuronalNetworks1\Debug\NeuronalNetworks1.exe

@@ -16,11 +16,25 @@ namespace neural_net
 
 	void LayerDense::forward(Utilities::nMatrix& inputs)
 	{
+		this->inputs = inputs;
+
 		Utilities::MatrixDot(inputs, weights, output);
 		LOG("Inputs * Weight matrix: " << std::endl << output);
 		Utilities::MatrixAdd(output, biases);
 		LOG("Adding the biases, the output of this layers is: " << std::endl << output);
 
 
+	}
+	void LayerDense::backward(Utilities::nMatrix & dValues)
+	{
+		//The partial derivative with respect to the weights is the inputs so we multiply the dvalues for the chain rule with the inputs
+		//to get the partial derivative with respect to the weights
+		Utilities::MatrixDot(inputs.transpose(), dValues, dWeights);
+
+		//The same thing for the partial derivatives with respect to the inputs
+		Utilities::MatrixDot(dValues, weights.transpose(), dInputs);
+
+		//For the partial derivatives with respect to the biases vector, we will sum the values on the row of the dValues matrix.
+		dBiases = Utilities::matrixSumInAxis(dValues, 0);
 	}
 }

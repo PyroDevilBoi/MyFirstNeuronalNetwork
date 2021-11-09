@@ -57,7 +57,17 @@ int main()
 	neural_net::categoricalCrossEntropy cat;
 	neural_net::loss loss1;
 	
-	
+	std::cout << "========TEST==========" << std::endl;
+	std::cout << std::endl << layer2.output;
+	std::cout << "========dweights==========" << std::endl;
+	layer2.backward(layer2.output);
+	std::cout << std::endl << layer2.dWeights;
+	std::cout << "========dinputs==========" << std::endl;
+	std::cout << std::endl << layer2.dInputs;
+	std::cout << "========dbiases==========" << std::endl;
+	std::cout << std::endl << layer2.dBiases;
+	std::cout << "========TEST==========" << std::endl;
+	/*
 	std::cout << "========SOFToutput==========" << std::endl;
 	//FINAL OUTPUT
 	std::cout << std::endl << softMax1.output;
@@ -77,7 +87,7 @@ int main()
 	reLU1.backward(layer2.output);
 	std::cout << std::endl;
 	std::cout << std::endl << reLU1.derivativeInputs;
-	
+	*/
 
 	
 
