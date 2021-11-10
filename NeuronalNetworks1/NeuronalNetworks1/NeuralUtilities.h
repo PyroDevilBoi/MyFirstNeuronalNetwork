@@ -44,10 +44,12 @@ namespace Utilities
 	struct nVector
 	{
 		std::vector<double> v;
+		
 
 		void fillVec(const unsigned int size, const double numberFilling)
 		{
 			v.clear();
+			
 
 			for (unsigned int i = 0; i < size; i++)
 			{
@@ -496,6 +498,62 @@ namespace Utilities
 			outmat.m.push_back(tempv);
 		}
 		return outmat;
+	}
+
+
+
+	inline void removeRowAndCol(nMatrix& mat, const int x ,const int y)
+	{
+
+
+		for(unsigned int i = 0; i < mat.m.size(); i++)
+		{
+			
+			mat.m[i].v.erase(mat.m[i].v.begin() + y);
+			
+		}
+	
+		mat.m.erase(mat.m.begin() + x);
+
+	}
+
+
+	//https://www.e-formule.ro/wp-content/uploads/determinantul-matricei.htm
+	//start index with -1
+/*
+	double matrixDeterminant(const nMatrix& mat, int index)
+	{
+		// i=0...n: (-1)^(i+2) * a1i * D1i
+
+		if (index == 0)
+		{
+			return pow(-1, 2) * mat.m[0].v[0] *
+		}
+		//detResult = pow(-1, index + 2) * mat.m[0].v[index] * matrixDeterminant(, index)
+	}
+	*/
+	
+
+
+	//divide every element by value
+	inline nMatrix matrixDivValue(const double value, const nMatrix& mat, bool denominator)
+	{
+		nMatrix outmat;
+
+		for (unsigned int i = 0; i < mat.m.size(); i++)
+		{
+			nVector tempv;
+			for (unsigned int j = 0; j < mat.m[i].v.size(); j++)
+			{
+				if(denominator)
+					tempv.v.push_back(mat.m[i].v[j] / value);
+				else
+					tempv.v.push_back(value / mat.m[i].v[j]);
+			}
+			outmat.m.push_back(tempv);
+		}
+		return outmat;
+
 	}
 
 	//minus value from all the elements

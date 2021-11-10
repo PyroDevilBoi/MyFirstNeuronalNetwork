@@ -74,10 +74,13 @@ namespace neural_net
 		Utilities::nVector correctConidence;
 		Utilities::nVector tempVec;
 		Utilities::nMatrix tempMat;
+		Utilities::nMatrix derivativeInputs;
 		categoricalCrossEntropy();
 		~categoricalCrossEntropy();
 		void forward(Utilities::nMatrix& inputs, Utilities::nMatrix& target_class);
 		void forward(Utilities::nMatrix& inputs, Utilities::nVector& target_class);
+		void backward(Utilities::nMatrix& dValues, Utilities::nMatrix& target_class);
+		void backward(Utilities::nMatrix& dValues, Utilities::nVector& target_class);
 		
 	};
 }

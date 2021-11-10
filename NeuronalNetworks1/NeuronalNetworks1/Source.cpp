@@ -53,10 +53,13 @@ int main()
 
 	//pass the output of the previous layer
 	softMax1.forward(layer2.output);
+	Utilities::removeRowAndCol(layer2.output, 1, 1);
+	std::cout << layer2.output;
 
 	neural_net::categoricalCrossEntropy cat;
 	neural_net::loss loss1;
 	
+	/*
 	std::cout << "========TEST==========" << std::endl;
 	std::cout << std::endl << layer2.output;
 	std::cout << "========dweights==========" << std::endl;
@@ -67,6 +70,7 @@ int main()
 	std::cout << "========dbiases==========" << std::endl;
 	std::cout << std::endl << layer2.dBiases;
 	std::cout << "========TEST==========" << std::endl;
+	*/
 	/*
 	std::cout << "========SOFToutput==========" << std::endl;
 	//FINAL OUTPUT

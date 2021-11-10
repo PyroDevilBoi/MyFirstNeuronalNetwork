@@ -104,3 +104,14 @@ void neural_net::categoricalCrossEntropy::forward(Utilities::nMatrix& inputs, Ut
 	output = Utilities::negLog(correctConidence);
 }
 
+void neural_net::categoricalCrossEntropy::backward(Utilities::nMatrix & dValues, Utilities::nMatrix & target_class)
+{
+	//sample size
+	int samples = target_class.m.size() * target_class.m[0].v.size();
+
+	//label size
+	int labels = target_class.m[0].v.size();
+
+	//derivativeInputs = Utilities::matrixDiv()
+}
+
