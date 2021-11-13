@@ -502,9 +502,9 @@ namespace Utilities
 
 
 
-	inline void removeRowAndCol(nMatrix& mat, const int x ,const int y)
+	inline nMatrix removeRowAndCol(nMatrix mat, const int x ,const int y)
 	{
-
+		nMatrix res;
 
 		for(unsigned int i = 0; i < mat.m.size(); i++)
 		{
@@ -514,24 +514,45 @@ namespace Utilities
 		}
 	
 		mat.m.erase(mat.m.begin() + x);
-
+		res = mat;
+		return res;
 	}
 
 
 	//https://www.e-formule.ro/wp-content/uploads/determinantul-matricei.htm
 	//start index with -1
-/*
-	double matrixDeterminant(const nMatrix& mat, int index)
+	
+	inline double matrixDeterminant(nMatrix& mat)
 	{
 		// i=0...n: (-1)^(i+2) * a1i * D1i
 
-		if (index == 0)
+		if (mat.m.size() == 1)
 		{
-			return pow(-1, 2) * mat.m[0].v[0] *
+			return mat.m[0].v[0];
 		}
+
+		if (mat.m.size() == 2)
+		{
+			return mat.m[0].v[0] * mat.m[1].v[1] - mat.m[0].v[1] * mat.m[1].v[0];
+		}
+
+		
+
+		double result = 0;
+		int sign = 1;
+
+		for (int i = 0; i < mat.m.size(); i++)
+		{
+			nMatrix clone;
+			clone = removeRowAndCol(mat, 0, i);
+			result = result + sign * mat.m[0].v[i] * matrixDeterminant(clone);
+		    sign = -1 * sign;
+		}
+
+		return result;
 		//detResult = pow(-1, index + 2) * mat.m[0].v[index] * matrixDeterminant(, index)
 	}
-	*/
+	
 	
 
 

@@ -53,9 +53,11 @@ int main()
 
 	//pass the output of the previous layer
 	softMax1.forward(layer2.output);
-	Utilities::removeRowAndCol(layer2.output, 1, 1);
-	std::cout << layer2.output;
-
+	
+	
+	
+	std::cout << "==========dddd" << std::endl;
+	std::cout << Utilities::matrixDeterminant(layer2.output);
 	neural_net::categoricalCrossEntropy cat;
 	neural_net::loss loss1;
 	
