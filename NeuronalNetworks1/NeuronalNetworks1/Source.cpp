@@ -57,7 +57,10 @@ int main()
 	
 	
 	std::cout << "==========dddd" << std::endl;
-	std::cout << Utilities::matrixDeterminant(layer2.output);
+	//std::cout << Utilities::matrixDeterminant(layer2.output);
+	Utilities::nMatrix testm;
+	testm = Utilities::eyefy(target_vec);
+	std::cout << testm;
 	neural_net::categoricalCrossEntropy cat;
 	neural_net::loss loss1;
 	

@@ -57,6 +57,8 @@ namespace Utilities
 			}
 		}
 
+		
+
 		friend std::ostream& operator <<(std::ostream& out, const nVector& vec)
 		{
 			out << "[";
@@ -101,6 +103,7 @@ namespace Utilities
 			}
 		}
 
+	
 
 		//Matrix transpose
 		nMatrix transpose()
@@ -500,7 +503,22 @@ namespace Utilities
 		return outmat;
 	}
 
+	//turn a one-hot encoded vector into one-hot encoded matrix
+	inline nMatrix eyefy(nVector& vec)
+	{
+		nMatrix res;
+		res.fillMat(vec.v.size(), vec.v.size(), 0);
 
+		for (unsigned int i = 0; i < res.m.size(); i++)
+		{
+			
+				res.m[i].v[vec.v[i]] = 1;
+			
+		}
+
+		return res;
+
+	}
 
 	inline nMatrix removeRowAndCol(nMatrix mat, const int x ,const int y)
 	{
