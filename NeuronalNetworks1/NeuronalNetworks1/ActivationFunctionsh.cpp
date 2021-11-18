@@ -106,12 +106,35 @@ void neural_net::categoricalCrossEntropy::forward(Utilities::nMatrix& inputs, Ut
 
 void neural_net::categoricalCrossEntropy::backward(Utilities::nMatrix & dValues, Utilities::nMatrix & target_class)
 {
+	//cap values in case they're 0?
+	Utilities::nMatrix safety;
+
+
 	//sample size
-	int samples = target_class.m.size() * target_class.m[0].v.size();
+	int samples = dValues.m.size();
 
 	//label size
-	int labels = target_class.m[0].v.size();
+	int labels = dValues.m[0].v.size();
 
-	//derivativeInputs = Utilities::matrixDiv()
+	derivativeInputs = Utilities::softDiv(target_class, dValues);
+	derivativeInputs = Utilities::multElement(derivativeInputs, -1);
+	derivativeInputs = Utilities::divElement(derivativeInputs, samples);
+}
+
+void neural_net::categoricalCrossEntropy::backward(Utilities::nMatrix & dValues, Utilities::nVector & target_class)
+{
+	//sample size
+	int samples = dValues.m.size();
+
+	//label size
+	int labels = dValues.m[0].v.size();
+
+	//the target class vector transformed into a matrix
+	Utilities::nMatrix temp;
+
+	temp = Utilities::eyefy(target_class);
+	temp = Utilities::multElement(temp, -1);
+	derivativeInputs = Utilities::softDiv(temp, dValues);
+	derivativeInputs = Utilities::divElement(derivativeInputs, samples);
 }
 

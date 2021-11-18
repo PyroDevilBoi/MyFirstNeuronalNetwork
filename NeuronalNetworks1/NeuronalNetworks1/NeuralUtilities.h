@@ -520,6 +520,66 @@ namespace Utilities
 
 	}
 
+	//dividing each element in order from one matrix to another, with both of them having the same size
+	//m1 - numerator ;   m2 - denominator
+	inline nMatrix softDiv(nMatrix& m1, nMatrix& m2)
+	{
+		nMatrix res;
+
+		
+
+		for (unsigned int i = 0; i < m1.m.size(); i++)
+		{
+			nVector tempv;
+
+			for (unsigned int j = 0; j < m1.m[i].v.size(); j++)
+			{
+				tempv.v.push_back(m1.m[i].v[j] / m2.m[i].v[j]);
+			}
+			res.m.push_back(tempv);
+		}
+
+		return res;
+
+	}
+
+
+	inline nMatrix multElement(nMatrix& mat, double e)
+	{
+		nMatrix res;
+
+		for (unsigned int i = 0; i < mat.m.size(); i++)
+		{
+			nVector tempv;
+
+			for (unsigned int j = 0; j < mat.m[i].v.size(); j++)
+			{
+				tempv.v.push_back(mat.m[i].v[j] * e);
+			}
+			res.m.push_back(tempv);
+		}
+
+		return res;
+	}
+
+	inline nMatrix divElement(nMatrix& mat, double e)
+	{
+		nMatrix res;
+
+		for (unsigned int i = 0; i < mat.m.size(); i++)
+		{
+			nVector tempv;
+
+			for (unsigned int j = 0; j < mat.m[i].v.size(); j++)
+			{
+				tempv.v.push_back(mat.m[i].v[j] / e);
+			}
+			res.m.push_back(tempv);
+		}
+
+		return res;
+	}
+
 	inline nMatrix removeRowAndCol(nMatrix mat, const int x ,const int y)
 	{
 		nMatrix res;
